@@ -12,7 +12,7 @@ $parroquia = $_POST[parroquia];
 $tipo = $_POST[tipo];
 $estado = $_POST[estado];
 if($opcion!=""){
-    
+
 } else{
     if($editar==1 and $codigo=="" and $nombre!=""){
         paraTodos::arrayInserte("est_nombre, est_rif, est_propietario, est_tipo, est_muncodigo, est_parcodigo, est_direccion, est_estado", "establecimiento", "'$nombre', '$rif', '$propietario', '$tipo', '$municipio', '$parroquia', '$direccion', $estado");
@@ -52,7 +52,7 @@ if($opcion!=""){
         }
     }
     if($eliminar==1){
-        paraTodos::arrayDelete("est_codigo=$codigo" ,"personal");
+        paraTodos::arrayDelete("est_codigo=$codigo" ,"establecimiento");
         $eliminar="";
     }
     $consul_establecimiento = paraTodos::arrayConsulta("*", "establecimiento e,municipio m, parroquia p, tools_status", "e.est_muncodigo=m.mun_codigo and e.est_parcodigo=p.par_codigo and est_estado=st_codigo");

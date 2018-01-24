@@ -9,30 +9,30 @@ if($opcion!=""){
 
 } else{
     if($editar==1 and $codigo=="" and $descrip!=""){
-        paraTodos::arrayInserte("mun_descrip, mun_estado", "municipio", "'$descrip', $estado");
+        paraTodos::arrayInserte("ru_descripcion, ru_estado", "rubros", "'$descrip', $estado");
         $descrip = "";
         $estado = "";
         $codigo = "";
     }
     if($editar==1 and $codigo!="" and $descrip!=""){
-        paraTodos::arrayUpdate("mun_descrip='$descrip', mun_estado='$estado'", "municipio", "mun_codigo=$codigo");
+        paraTodos::arrayUpdate("ru_descripcion='$descrip',ru_estado='$estado'", "rubros", "ru_codigo=$codigo");
         $descrip = "";
         $estado = "";
         $codigo = "";
     }
     if($editar==1 and $codigo!="" and $descrip==""){
-        $consulta = paraTodos::arrayConsulta("*", "municipio", "mun_codigo=$codigo");
+        $consulta = paraTodos::arrayConsulta("*", "rubros", "ru_codigo=$codigo");
         foreach($consulta as $post){
-            $descrip = $post[mun_descrip];
-            $estado = $post[mun_estado];
-            $codigo = $post[mun_codigo];
+            $descrip = $post[ru_descripcion];
+            $estado = $post[ru_estado];
+            $codigo = $post[ru_codigo];
         }
     }
     if($eliminar==1){
-        paraTodos::arrayDelete("mun_codigo=$codigo" ,"municipio");
+        paraTodos::arrayDelete("ru_codigo=$codigo" ,"rubros");
         $eliminar="";
     }
-    $consulmun = paraTodos::arrayConsulta("*", "municipio m, tools_status", "mun_estado=st_codigo");
+    $consul_rubros = paraTodos::arrayConsulta("*", "rubros, tools_status s", "ru_estado=st_codigo");
 }
 ?>
 

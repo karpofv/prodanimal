@@ -5,11 +5,11 @@
     <div class="col-xs-12">
         <div class="x_panel">
             <div class="x_title">
-                <h2>Municipio</h2>
+                <h2>Parroquia</h2>
                 <div class="clearfix"></div>
             </div>
             <div class="x_content">
-                <form class="form-horizontal" method="post" action="javascript:void(0)" onsubmit="controler('dmn=<?php echo $idMenu;?>&codigo='+$('#codigo').val()+'&descrip='+$('#descrip').val()+'&estado='+$('#selestado').val()+'&editar=1&ver=1', 'verContenido'); return false;">
+                <form class="form-horizontal" method="post" action="javascript:void(0)" onsubmit="controler('dmn=<?php echo $idMenu;?>&codigo='+$('#codigo').val()+'&descrip='+$('#descrip').val()+'&municipio='+$('#selmun').val()+'&estado='+$('#selestado').val()+'&editar=1&ver=1', 'verContenido'); return false;">
                     <div class="form-group">
                         <div class="col-md-12">
                             <label class="control-label">Descripcion</label>
@@ -18,8 +18,17 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <div class="col-md-8">
+                            <label class="control-label">Municipio</label>
+                            <select class="form-control" id="selmun">
+                                <option value="">Seleccione una opción</option>
+                                <?php
+                                combos::CombosSelect("1", "$municipio", "mun_codigo, mun_descrip", "municipio", "mun_codigo", "mun_descrip", "1=1");
+                                ?>
+                            </select>
+                        </div>
                         <div class="col-md-4">
-                            <label class="col-md-2 control-label">Estado</label>
+                            <label class="control-label">Estado</label>
                             <select class="form-control" id="selestado">
                                 <option value="">Seleccione una opción</option>
                                 <?php
@@ -43,7 +52,7 @@
     <div class="col-xs-12">
         <div class="x_panel">
             <div class="x_title">
-                <h2>Municipios registrados</h2>
+                <h2>Parroquias registradas</h2>
                 <div class="clearfix"></div>
             </div>
             <div class="x_content">
@@ -51,6 +60,7 @@
                     <thead>
                         <tr>
                             <th>Municipio</th>
+                            <th>Parroquia</th>
                             <th>Estado</th>
                             <th>Editar</th>
                             <th>Eliminar</th>
@@ -58,16 +68,17 @@
                     </thead>
                     <tbody>
                         <?php
-                            foreach($consulmun as $post){
+                            foreach($consulpar as $post){
                         ?>
                         <tr>
                             <th scope="row"><?php echo $post['mun_descrip'];?></th>
+                            <th><?php echo $post['par_descrip'];?></th>
                             <td><?php echo $post['st_descripcion'];?></td>
                             <td>
-                                <a href="javascript:void(0);" onclick="controler('dmn=<?php echo $idMenu;?>&codigo=<?php echo $post[mun_codigo]?>&editar=1&ver=1', 'verContenido');"><i class="glyphicon glyphicon-check bg-green"></i></a>
+                                <a href="javascript:void(0);" onclick="controler('dmn=<?php echo $idMenu;?>&codigo=<?php echo $post[par_codigo]?>&editar=1&ver=1', 'verContenido');"><i class="glyphicon glyphicon-check bg-green"></i></a>
                             </td>
                             <td>
-                                <a href="javascript:void(0);" onclick="controler('dmn=<?php echo $idMenu;?>&codigo=<?php echo $post[mun_codigo]?>&eliminar=1&ver=1', 'verContenido');"><i class="glyphicon glyphicon-remove bg-red"></i></a>
+                                <a href="javascript:void(0);" onclick="controler('dmn=<?php echo $idMenu;?>&codigo=<?php echo $post[par_codigo]?>&eliminar=1&ver=1', 'verContenido');"><i class="glyphicon glyphicon-remove bg-red"></i></a>
                             </td>
                         </tr>
                         <?php

@@ -5,7 +5,7 @@
     <div class="col-xs-12">
         <div class="x_panel">
             <div class="x_title">
-                <h2>Municipio</h2>
+                <h2>Rubros</h2>
                 <div class="clearfix"></div>
             </div>
             <div class="x_content">
@@ -13,13 +13,13 @@
                     <div class="form-group">
                         <div class="col-md-12">
                             <label class="control-label">Descripcion</label>
-                            <input type="text" class="form-control" id="descrip" value="<?php echo $descrip?>" required>
-                            <input type="text" class="collapse" id="codigo" value="<?php echo $codigo; ?>">
+                            <input type="text" class="form-control" id="descrip" value="<?php echo $descrip;?>" required>
+                            <input type="number" class="collapse" id="codigo" value="<?php echo $codigo;?>">
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-md-4">
-                            <label class="col-md-2 control-label">Estado</label>
+                            <label class="control-label">Estado</label>
                             <select class="form-control" id="selestado">
                                 <option value="">Seleccione una opción</option>
                                 <?php
@@ -43,38 +43,38 @@
     <div class="col-xs-12">
         <div class="x_panel">
             <div class="x_title">
-                <h2>Municipios registrados</h2>
+                <h2>Rubros Registrados</h2>
                 <div class="clearfix"></div>
             </div>
             <div class="x_content">
-                <table class="table table-hover" id="municipio">
+                <table class="table table-hover" id="rubros">
                     <thead>
                         <tr>
-                            <th>Municipio</th>
+                            <th>Rubro</th>
                             <th>Estado</th>
                             <th>Editar</th>
                             <th>Eliminar</th>
-                        </tr>
-                    </thead>
+                            </tr>
+                       </thead>
                     <tbody>
                         <?php
-                            foreach($consulmun as $post){
-                        ?>
-                        <tr>
-                            <th scope="row"><?php echo $post['mun_descrip'];?></th>
-                            <td><?php echo $post['st_descripcion'];?></td>
-                            <td>
-                                <a href="javascript:void(0);" onclick="controler('dmn=<?php echo $idMenu;?>&codigo=<?php echo $post[mun_codigo]?>&editar=1&ver=1', 'verContenido');"><i class="glyphicon glyphicon-check bg-green"></i></a>
-                            </td>
-                            <td>
-                                <a href="javascript:void(0);" onclick="controler('dmn=<?php echo $idMenu;?>&codigo=<?php echo $post[mun_codigo]?>&eliminar=1&ver=1', 'verContenido');"><i class="glyphicon glyphicon-remove bg-red"></i></a>
-                            </td>
-                        </tr>
-                        <?php
-                        }
-                        ?>
-                    </tbody>
-                </table>
+                            foreach($consul_rubros as $post){
+                            ?>
+                           <tr>
+                               <th scope="row"><?php echo $post['ru_descripcion'];?></th>
+                               <td><?php echo $post['st_descripcion'];?></td>
+                               <td>
+                                   <a href="javascript:void(0);" onclick="controler('dmn=<?php echo $idMenu;?>&codigo=<?php echo $post[ru_codigo]?>&editar=1&ver=1', 'verContenido');"><i class="glyphicon glyphicon-check bg-green"></i> </a>
+                               </td>
+                               <td>
+                                   <a href="javascript:void(0);" onclick="controler('dmn=<?php echo $idMenu;?>&codigo=<?php echo $post[ru_codigo]?>&eliminar=1&ver=1', 'verContenido');"><i class="glyphicon glyphicon-remove bg-red"></i></a>
+                               </td>
+                           </tr>
+                           <?php
+                                }
+                           ?>
+                       </tbody>
+                    </table>
             </div>
         </div>
     </div>
