@@ -5,7 +5,7 @@
     <div class="col-xs-12">
         <div class="x_panel">
             <div class="x_title">
-                <h2>Clase de rubro</h2>
+                <h2>Categoría de rubro</h2>
                 <div class="clearfix"></div>
             </div>
             <div class="x_content">
@@ -19,11 +19,12 @@
                                 combos::CombosSelect("1", "$rubro", "ru_codigo, ru_descripcion", "rubros", "ru_codigo", "ru_descripcion", "1=1");
                                 ?>
                             </select>
-                        </div>
+                        </div>                              
                         <div class="col-md-8">
-                            <label class="control-label">Descripcion</label>
+                            <label class="control-label">Categoría</label>                                            
                             <input type="text" class="form-control" id="descrip" value="<?php echo $descrip;?>" required>
-                            <input type="number" class="collapse" id="codigo" value="<?php echo $codigo?>"> </div>
+                            <input type="number" class="collapse" id="codigo" value="<?php echo $codigo;?>">
+                        </div>
                     </div>
                     <div class="form-group">
                         <div class="col-md-4">
@@ -37,8 +38,8 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-2 control-label"></label>
-                        <div class="col-md-8">
+                        <label class="col-md-2 control-label"></label>										
+                        <div class="col-md-12">
                             <button type="submit" class="btn btn-default" id="btnsave">GUARDAR</button>
                             <button type="button" class="btn btn-danger" id="btncancel">CANCELAR</button>
                         </div>
@@ -52,51 +53,45 @@
     <div class="col-xs-12">
         <div class="x_panel">
             <div class="x_title">
-                <h2>Clase de rubro</h2>
+                <h2>Categorías de rubro</h2>
                 <div class="clearfix"></div>
             </div>
             <div class="x_content">
-                <div class="tables">
+                <div class="tables" id="categorias">
                     <div class="bs-example widget-shadow" data-example-id="hoverable-table">
-                        <h4>Clases Registradas</h4>
-                        <table class="table table-hover" id="clases">
-                            <thead>
-                                <tr>
-                                    <th>Rubro</th>
-                                    <th>Clase</th>
-                                    <th>Estado</th>
-                                    <th>Editar</th>
-                                    <th>Eliminar</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                    foreach($consul_clase as $post){
+                        <h4>Categorías Registradas</h4>
+                        <table class="table table-hover" id="categoria">
+                           <thead>
+                               <tr>
+                                   <th>Rubro</th>
+                                   <th>Categoría</th>
+                                   <th>Estado</th>
+                                   <th>Editar</th>
+                                   <th>Eliminar</th>
+                               </tr> 
+                           </thead> 
+                           <tbody> 
+                               <?php
+                                    foreach($consul_catego as $post){
                                 ?>
-                                    <tr>
-                                        <th scope="row">
-                                            <?php echo $post['ru_descripcion'];?>
-                                        </th>
+                               <tr> 
+                                   <th scope="row"><?php echo $post['ru_descripcion'];?></th>
+                                   <td><?php echo $post['rucat_descripcion'];?></td> 
+                                   <td><?php echo $post['st_descripcion'];?></td> 
                                         <td>
-                                            <?php echo $post['ruc_descripcion'];?>
+                                            <a href="javascript:void(0);" onclick="controler('dmn=<?php echo $idMenu;?>&codigo=<?php echo $post[rucat_codigo]?>&editar=1&ver=1', 'verContenido');"><i class="glyphicon glyphicon-check bg-green"></i> </a>
                                         </td>
                                         <td>
-                                            <?php echo $post['st_descripcion'];?>
+                                            <a href="javascript:void(0);" onclick="controler('dmn=<?php echo $idMenu;?>&codigo=<?php echo $post[rucat_codigo]?>&eliminar=1&ver=1', 'verContenido');"><i class="glyphicon glyphicon-remove bg-red"></i></a>
                                         </td>
-                                        <td>
-                                            <a href="javascript:void(0);" onclick="controler('dmn=<?php echo $idMenu;?>&codigo=<?php echo $post[ruc_codigo]?>&editar=1&ver=1', 'verContenido');"><i class="glyphicon glyphicon-check bg-green"></i> </a>
-                                        </td>
-                                        <td>
-                                            <a href="javascript:void(0);" onclick="controler('dmn=<?php echo $idMenu;?>&codigo=<?php echo $post[ruc_codigo]?>&eliminar=1&ver=1', 'verContenido');"><i class="glyphicon glyphicon-remove bg-red"></i></a>
-                                        </td>
-                                    </tr>
-                                    <?php
+                               </tr> 
+                               <?php
                                     }
                                ?>
-                            </tbody>
+                           </tbody>
                         </table>
                     </div>
-                </div>
+                </div>          
             </div>
         </div>
     </div>

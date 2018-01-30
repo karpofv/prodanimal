@@ -56,7 +56,7 @@
                 <div class="clearfix"></div>
             </div>
             <div class="x_content">
-                <table class="table table-hover" id="municipio">
+                <table class="table table-hover" id="parroquias">
                     <thead>
                         <tr>
                             <th>Municipio</th>

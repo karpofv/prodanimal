@@ -89,4 +89,5 @@
     </div>
 </div>
 <!-- /top navigation -->
+<div id="VentanaVer"></div>
 <div class="right_col" role="main" id="verContenido">

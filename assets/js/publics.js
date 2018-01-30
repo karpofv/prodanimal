@@ -5,6 +5,7 @@ function controler(xdata, xventana) {
         , data: xdata
         , ajaxSend: $('#' + xventana).html(cargando)
         , success: function (html) {
+            $('#VentanaVer').html("");            
             $('#'+xventana).html(html);
         }
     });
