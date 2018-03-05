@@ -1,5 +1,9 @@
 <?php
-$codigo = $_POST[codigo];
+$codestab = $_POST['codigoestab'];
+$selrubro = $_POST['selrubro'];
+/*Se busca la ultima produccion cargada y se muestran los datos*/
+    $consulprcodigo = paraTodos::arrayConsulta("max(pr_codigo) as pr_codigo", "produccion", "pr_estcodigo=$codigoestab and pr_rucodigo=$selrubro");
+    $cod_prod = $consulprcodigo[0]['pr_codigo'];
 ?>
 <table id='tbconsul' class='stripe' cellspacing='0' width='100%'>
     <div class='cabecera'>
@@ -14,19 +18,19 @@ $codigo = $_POST[codigo];
                 <th>Categoría</th>
                 <th id='thdistri'>Distribucion</th>
                 <th>Cantidad</th>
-                <th>Eliminar</th>
+                <th>Eliminar<?php echo $codigo;?></th>
             </tr>
         </thead>
     </div>
     <tbody class='body'>
         <?php
-        $consul_prod = paraTodos::arrayConsulta("*", "produccion", "pr_codigo=$codigo");
+        $consul_prod = paraTodos::arrayConsulta("m.mes_descripcion, e.est_nombre, r.ru_descripcion", "produccion pr, tools_mes m, establecimiento e, rubros r", "pr_codigo=$cod_prod and pr.pr_mes=m.mes_codigo and pr.pr_estcodigo=e.est_codigo and pr.pr_rucodigo=r.ru_codigo");
         foreach($consul_prod as $prod){
 ?>
         <tr>
-            <td><?php echo $prod['pr_mes'];?></td>
-            <td><?php echo $prod['pr_estcodigo'];?></td>
-            <td><?php echo $prod['pr_rucodigo'];?></td>
+            <td><?php echo $prod['mes_descripcion'];?></td>
+            <td><?php echo $prod['est_nombre'];?></td>
+            <td><?php echo $prod['ru_descripcion'];?></td>
             <td></td>
             <td></td>
             <td></td>

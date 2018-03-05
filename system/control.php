@@ -41,13 +41,13 @@
         $modelo = $rowenlace[$menusuf."modelo"];
         $jquery = $rowenlace[$menusuf."jquery"];
     }
-    if($modelo!="" and $act!=20){
+    if($modelo!="" and $_POST[actd]==""){
         include($modelo);
     }
-    if($enlace!=""){
+    if($enlace!="" ){
         include($enlace);
     }
-    if($jquery!="" and $act!=20){
+    if($jquery!="" and $_POST[actd]==""){
         ?>
     <script>
         <?php include($jquery);?>
